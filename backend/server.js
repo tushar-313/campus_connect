@@ -1,26 +1,31 @@
-const express = require('express');
-require('dotenv').config();
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+require("dotenv").config();
 
 const app = express();
-const cors = require('cors');
 
+// middleware
 app.use(cors());
-
-
-const PORT = 3000;
 app.use(express.json());
 
+// routes
+const authRoutes = require("./routes/auth");
+const postRoutes = require("./routes/post");
 
-const authRoutes = require('./routes/auth');
-app.use('/auth', authRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/posts", postRoutes);
 
-const postRoutes = require('./routes/post');
-app.use('/posts', postRoutes);
+// serve frontend
+app.use(express.static(path.join(__dirname, "../frontend")));
 
-app.get('/', (req, res) => {
-  res.send('Server is running');
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
 
+// PORT fix
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log("Server running on port " + PORT);
 });

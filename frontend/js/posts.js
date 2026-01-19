@@ -1,4 +1,3 @@
-const API = 'http://localhost:3000';
 const token = localStorage.getItem('token');
 
 // TYPEWRITER EFFECT
@@ -20,7 +19,7 @@ if (!token) window.location.href = 'login.html';
 const postsDiv = document.getElementById('posts');
 
 async function loadPosts() {
-  const res = await fetch(`${API}/posts`);
+  const res = await fetch('/api/posts');
   const data = await res.json();
 
   postsDiv.innerHTML = '';
@@ -29,13 +28,12 @@ async function loadPosts() {
     const div = document.createElement('div');
     div.className = 'post';
 
- div.innerHTML = `
-  <h3>${p.title}</h3>
-  <p>${p.description}</p>
-  <span class="author">Posted by ${p.author}</span>
-  <button onclick="deletePost(${p.id})">Delete</button>
-`;
-
+    div.innerHTML = `
+      <h3>${p.title}</h3>
+      <p>${p.description}</p>
+      <span class="author">Posted by ${p.author}</span>
+      <button onclick="deletePost(${p.id})">Delete</button>
+    `;
 
     postsDiv.appendChild(div);
   });
@@ -47,7 +45,7 @@ document.getElementById('createPostBtn').onclick = async () => {
   const title = document.getElementById('title').value;
   const description = document.getElementById('description').value;
 
-  await fetch(`${API}/posts/create`, {
+  await fetch('/api/posts/create', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -60,7 +58,7 @@ document.getElementById('createPostBtn').onclick = async () => {
 };
 
 async function deletePost(id) {
-  await fetch(`${API}/posts/${id}`, {
+  await fetch(`/api/posts/${id}`, {
     method: 'DELETE',
     headers: {
       'Authorization': `Bearer ${token}`
@@ -82,7 +80,6 @@ const outline = document.querySelector('.cursor-outline');
 let mouseX = 0, mouseY = 0;
 let outlineX = 0, outlineY = 0;
 
-// Mouse move
 document.addEventListener('mousemove', e => {
   mouseX = e.clientX;
   mouseY = e.clientY;
@@ -91,7 +88,6 @@ document.addEventListener('mousemove', e => {
   dot.style.top = `${mouseY}px`;
 });
 
-// Smooth trailing effect
 function animateCursor() {
   outlineX += (mouseX - outlineX) * 0.15;
   outlineY += (mouseY - outlineY) * 0.15;
@@ -104,14 +100,12 @@ function animateCursor() {
 
 animateCursor();
 
-// Hover effect on interactive elements
 const hoverTargets = ['button', 'a', 'input', 'textarea'];
 
 hoverTargets.forEach(tag => {
   document.querySelectorAll(tag).forEach(el => {
     el.addEventListener('mouseenter', () => {
       outline.style.transform = 'translate(-50%, -50%) scale(1.6)';
-
     });
     el.addEventListener('mouseleave', () => {
       outline.style.transform = 'translate(-50%, -50%) scale(1)';
