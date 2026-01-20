@@ -15,11 +15,9 @@ The project focuses on real-world backend development, authentication, and cloud
 
 ## 📸 Screenshots / Demo
 
-<!-- Add screenshots here -->
-<!-- Example:
-![Login Page](screenshots/login.png)
-![Posts Page](screenshots/posts.png)
--->
+<img width="1280" height="722" alt="login" src="https://github.com/user-attachments/assets/f6f29ffd-b85c-4529-a6fc-2a162a502a5b" />
+<img width="1280" height="722" alt="dashboard" src="https://github.com/user-attachments/assets/15f55590-0cd0-4041-bf41-6fa50ebd300f" />
+
 
 
 ## 🛠 Tech Stack
