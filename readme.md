@@ -1,85 +1,111 @@
-# 🌌 Campus Galaxy
+# Campus Galaxy 🌌
 
-Campus Galaxy is a full-stack campus discussion platform where students can share issues, ideas, and updates within their campus community.  
-The project focuses on secure backend development and a modern, animated UI built using core web technologies.
+Campus Galaxy is a full-stack web application built for college students to share posts and updates in a secure way.  
+The project focuses on real-world backend development, authentication, and cloud deployment.
+
+---
+
+## 🔗 Live Demo
+
+👉 https://campus-galaxy.onrender.com 
+
+> Note: The app is hosted on free cloud services, so the first load may take a few seconds if the server was inactive. May give database error because of free trial version.
 
 ---
 
-## 🚀 Features
+## 📸 Screenshots / Demo
 
-- User registration and login
-- JWT-based authentication
-- Secure protected routes
-- Create campus posts
-- Delete posts (only by post owner)
-- Dynamic post feed
-- Galaxy-themed animated UI
-- Glassmorphism design
-- Custom animated cursor and micro-interactions
+<!-- Add screenshots here -->
+<!-- Example:
+![Login Page](screenshots/login.png)
+![Posts Page](screenshots/posts.png)
+-->
 
----
 
 ## 🛠 Tech Stack
 
-### Backend
-- Node.js
-- Express.js
-- MySQL
-- JWT (JSON Web Tokens)
-- bcrypt
-- dotenv
-
-### Frontend
-- HTML
-- CSS (glassmorphism, gradients, animations)
-- Vanilla JavaScript
-- GSAP (animations)
+- **Frontend:** HTML, CSS, JavaScript  
+- **Backend:** Node.js, Express.js  
+- **Auth:** JWT (JSON Web Token)  
+- **Database:** MySQL  
+- **Deployment:** Render (Backend), Railway (Database)
 
 ---
 
-## 🔐 Authentication & Authorization
+## ✨ Features
 
-- Passwords are hashed using bcrypt
-- JWT token generated on login
-- Token stored in localStorage
-- Protected routes verify JWT
-- Users can delete only their own posts
+- User registration & login
+- JWT-based authentication
+- Protected routes (login required)
+- Create and delete posts
+- Relational MySQL database
+- Cloud deployment with environment variables
 
 ---
 
 ## 📂 Project Structure
-
-campus_galaxy/
+campus_galaxy
+├── backend
+│ ├── routes
+│ ├── controllers
+│ ├── middleware
+│ ├── db.js
+│ └── server.js
 │
-├── backend/
-│   ├── controllers/
-│   │   ├── authController.js
-│   │   └── postController.js
-│   │
-│   ├── routes/
-│   │   ├── auth.js
-│   │   └── posts.js
-│   │
-│   ├── middleware/
-│   │   └── authMiddleware.js
-│   │
-│   ├── db.js
-│   ├── server.js
-│   ├── package.json
-│   └── .env
-│
-├── frontend/
-│   ├── css/
-│   │   ├── login.css
-│   │   ├── register.css
-│   │   └── index.css
-│   │
-│   ├── js/
-│   │   ├── auth.js
-│   │   └── posts.js
-│   │
-│   ├── login.html
-│   ├── register.html
-│   └── index.html
+├── frontend
+│ ├── css
+│ ├── js
+│ ├── index.html
+│ ├── login.html
+│ └── register.html
 │
 └── README.md
+
+🔐 Authentication Flow
+
+User logs in with email and password
+
+Backend generates a JWT token
+
+Token is stored in the browser
+
+Unauthenticated users are redirected to the login page
+
+⚙️ Environment Variables
+
+Create a .env file inside the backend folder:
+
+JWT_SECRET=your_secret_key
+MYSQL_URL=your_mysql_public_url
+
+🧪 Run Locally
+
+Steps:
+
+Clone the repository
+
+Go to the backend folder
+
+Install dependencies
+
+Start the server
+
+Open in browser:
+http://localhost:3000
+
+☁️ Deployment
+
+Backend deployed on Render
+
+MySQL database hosted on Railway
+
+Uptime monitoring used to avoid cold starts
+
+👨‍💻 Author
+
+Tushar Agarwal
+B.Tech CSE, IIIT Nagpur
+
+📌 Note
+
+This project was built for learning full-stack development and real deployment workflows.
